@@ -1,16 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MatCardModule } from '@angular/material/card'
-import Task from '../../models/Task';
 import { CommonModule } from '@angular/common';
-import { response } from 'express';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from "@angular/material/dialog";
+import Task from '../../models/Task';
+import { AddUserComponent } from '../../modals/add-user/add-user.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -19,11 +22,18 @@ import { response } from 'express';
 export class HomeComponent implements OnInit {
   public tasks: Task[] = []
 
-  constructor(private api: HttpClient) {}
+  constructor(private api: HttpClient, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.api.get<any>("http://localhost:8080/tasks").subscribe(response => {
       this.tasks = response.tasks
+    })
+  }
+
+  openModalAddTask() {
+    const dialogRef = this.dialog.open(AddUserComponent)
+    dialogRef.componentInstance.taskCreated.subscribe((task: Task) => {
+      this.tasks.push(task)
     })
   }
 }

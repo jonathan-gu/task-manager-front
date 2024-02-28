@@ -1,0 +1,27 @@
+.modal {
+    height: 500px;
+    width: 500px;
+
+    h1 {
+        margin: 50px 0 0;
+        text-align: center;
+    }
+    
+    .form {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 80%;
+        justify-content: center;
+    }
+
+    .field {
+        margin-bottom: 10px;
+        width: 50%;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 0 24px;
+    }
+}

@@ -1,0 +1,16 @@
+<div class="modal">
+    <h1>Ajout d'une tâche</h1>
+    <form class="form" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="field">
+            <mat-label>Titre</mat-label>
+            <input matInput formControlName="title">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Date d'échéance</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dueDate">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Ajouter</button>
+    </form>
+</div>

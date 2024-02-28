@@ -1,3 +1,7 @@
+<header>
+    <h1>Liste des tâches</h1>
+    <button mat-raised-button color="primary" (click)="openModalAddTask()">Ajouter</button>
+</header>
 <div class="tasks">
     <mat-card class="task" *ngFor="let task of tasks">
         <mat-card-header>

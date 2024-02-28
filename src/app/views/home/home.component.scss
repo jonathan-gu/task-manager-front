@@ -1,5 +1,21 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 50px 0 50px;
+
+    h1 {
+        font-size: 24px;
+        margin: 0;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 0 24px;
+    }
+}
+
 .tasks {
-    margin: 50px;
+    padding: 20px 50px;
     
     .task {
         margin: 25px 0;
