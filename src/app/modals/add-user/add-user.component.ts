@@ -5,7 +5,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import Task from '../../models/Task';
@@ -30,12 +30,20 @@ import Task from '../../models/Task';
 export class AddUserComponent {
   @Output() taskCreated = new EventEmitter<Task>();
 
+  dateNotIsPast = false
+
   taskForm = new FormGroup({
-    title: new FormControl(''),
-    dueDate: new FormControl('')
+    title: new FormControl('', Validators.required),
+    dueDate: new FormControl('', Validators.required)
   })
 
-  constructor(private api: HttpClient) {}
+  constructor(private api: HttpClient) {
+    this.taskForm.get("dueDate")?.valueChanges.subscribe((dueDate: string | null) => {
+      if (dueDate) {
+        this.dateNotIsPast = new Date(dueDate) <= new Date();
+      }
+    })
+  }
 
   onSubmit() {
     const title: string = this.taskForm.value.title as string
