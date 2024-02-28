@@ -1,0 +1,8 @@
+<div class="tasks">
+    <mat-card class="task" *ngFor="let task of tasks">
+        <mat-card-header>
+            <mat-card-title>{{ task.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>Date d'échéance : {{ task.dueDate | date: 'd/MM/y' }}</mat-card-content>
+    </mat-card>
+</div>

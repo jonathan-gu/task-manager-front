@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { HomeComponent } from './views/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrl: './app.component.scss',
   standalone: true,
   imports: [
-    MatToolbarModule
+    HttpClientModule,
+    MatToolbarModule,
+    HomeComponent
   ]
 })
 
