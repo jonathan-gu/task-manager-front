@@ -6,6 +6,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { AddTaskComponent } from '../../modals/add-task/add-task.component';
 import Task from '../../models/Task';
 import { DeleteTaskComponent } from '../../modals/delete-task/delete-task.component';
+import { EditTaskComponent } from '../../modals/edit-task/edit-task.component';
 
 @Component({
   selector: 'app-home',
@@ -50,6 +51,22 @@ export class HomeComponent implements OnInit {
   completeTask(taskId: number) {
     this.api.put(`http://localhost:8080/tasks/completed/${taskId}`, {}).subscribe(response => {
       this.tasks = this.tasks.filter(task => task.id !== taskId)
+    })
+  }
+
+  openModalEditTask(task: Task) {
+    const dialogRef = this.dialog.open(EditTaskComponent, {
+      data: {
+        task: task
+      }
+    })
+    dialogRef.componentInstance.taskUpdated.subscribe((taskUpdated: Task) => {
+      this.tasks.forEach(task => {
+        if (task.id === taskUpdated.id) {
+          task.name = taskUpdated.name
+          taskUpdated.dueDate = taskUpdated.dueDate
+        }
+      })
     })
   }
 }
