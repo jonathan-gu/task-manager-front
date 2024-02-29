@@ -1,0 +1,46 @@
+.modal {
+    height: 500px;
+    width: 500px;
+
+    h1 {
+        margin: 50px 0 0;
+        text-align: center;
+    }
+ 
+    .form {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 80%;
+        justify-content: center;
+        
+        h2 {
+            padding-bottom: 50px;
+            text-align: center;
+            width: 400px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            width: 400px;
+    
+            button {
+                border: none;
+                border-radius: 5px;
+                box-shadow: #00000020 2px 2px 2px 2px;
+                font-size: 16px;
+                height: 50px;
+                width: 150px;
+            }
+
+            .confirm {
+                background-color: #2ecc71;
+            }
+
+            .cancel {
+                background-color: #e74c3c;
+            }
+        }
+    }
+}

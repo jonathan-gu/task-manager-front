@@ -11,7 +11,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import Task from '../../models/Task';
 
 @Component({
-  selector: 'app-add-user',
+  selector: 'app-add-task',
   standalone: true,
   providers: [provideNativeDateAdapter(), { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }],
   imports: [
@@ -23,11 +23,11 @@ import Task from '../../models/Task';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  templateUrl: './add-user.component.html',
-  styleUrl: './add-user.component.scss'
+  templateUrl: './add-task.component.html',
+  styleUrl: './add-task.component.scss'
 })
 
-export class AddUserComponent {
+export class AddTaskComponent {
   @Output() taskCreated = new EventEmitter<Task>();
 
   dateNotIsPast = false

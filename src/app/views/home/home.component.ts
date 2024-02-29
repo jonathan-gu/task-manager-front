@@ -1,18 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from "@angular/material/dialog";
+import { AddTaskComponent } from '../../modals/add-task/add-task.component';
 import Task from '../../models/Task';
-import { AddUserComponent } from '../../modals/add-user/add-user.component';
+import { DeleteTaskComponent } from '../../modals/delete-task/delete-task.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule,
     MatButtonModule
   ],
   templateUrl: './home.component.html',
@@ -31,9 +30,20 @@ export class HomeComponent implements OnInit {
   }
 
   openModalAddTask() {
-    const dialogRef = this.dialog.open(AddUserComponent)
+    const dialogRef = this.dialog.open(AddTaskComponent)
     dialogRef.componentInstance.taskCreated.subscribe((task: Task) => {
       this.tasks.push(task)
+    })
+  }
+
+  openModalDeleteTask(task: Task) {
+    const dialogRef = this.dialog.open(DeleteTaskComponent, {
+      data: {
+        task: task
+      }
+    })
+    dialogRef.componentInstance.taskDeleted.subscribe((taskDeleted: Task) => {
+      this.tasks = this.tasks.filter(task => task.id !== taskDeleted.id)
     })
   }
 }

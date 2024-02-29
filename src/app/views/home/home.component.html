@@ -3,10 +3,13 @@
     <button mat-raised-button color="primary" (click)="openModalAddTask()">Ajouter</button>
 </header>
 <div class="tasks">
-    <mat-card class="task" *ngFor="let task of tasks">
-        <mat-card-header>
-            <mat-card-title>{{ task.name }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>Date d'échéance : {{ task.dueDate | date: 'd/MM/y' }}</mat-card-content>
-    </mat-card>
+    <div class="task" *ngFor="let task of tasks">
+        <div class="content">
+            <h2>{{ task.name }}</h2>
+            <p>Date d'échéance : {{ task.dueDate | date: 'd/MM/y' }}</p>
+        </div>
+        <div class="actions">
+            <span class="material-icons" (click)="openModalDeleteTask(task)">delete</span>
+        </div>
+    </div>
 </div>
