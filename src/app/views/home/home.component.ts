@@ -46,4 +46,10 @@ export class HomeComponent implements OnInit {
       this.tasks = this.tasks.filter(task => task.id !== taskDeleted.id)
     })
   }
+
+  completeTask(taskId: number) {
+    this.api.put(`http://localhost:8080/tasks/completed/${taskId}`, {}).subscribe(response => {
+      this.tasks = this.tasks.filter(task => task.id !== taskId)
+    })
+  }
 }

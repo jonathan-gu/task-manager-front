@@ -27,7 +27,7 @@ header {
         padding: 5px 20px;
 
         .content {
-            h2 {
+            h3 {
                 margin: 0;
                 padding: 10px 0;
             }
@@ -41,6 +41,7 @@ header {
         .actions {
             span {
                 cursor: pointer;
+                margin-right: 20px;
             }
         }
     }
