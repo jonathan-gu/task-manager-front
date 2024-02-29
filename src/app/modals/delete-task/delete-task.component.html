@@ -4,7 +4,7 @@
         <h2>Voulez-vous supprimer la tâche "{{ task.name }}" ?</h2>
         <div class="buttons">
             <button class="confirm" (click)="deleteTask(task.id)">Confirmer</button>
-            <button class="cancel">Annuler</button>
+            <button class="cancel" (click)="closeModal()">Annuler</button>
         </div>
     </div>
 </div>

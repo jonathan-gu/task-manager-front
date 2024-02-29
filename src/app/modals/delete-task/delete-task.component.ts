@@ -24,7 +24,11 @@ export class DeleteTaskComponent {
   deleteTask(taskId: number) {
     this.api.delete<any>(`http://localhost:8080/tasks/${taskId}`).subscribe(response => {
       this.taskDeleted.emit(response.task)
-      this.dialogRef.close()
+      this.closeModal()
     })
+  }
+  
+  closeModal() {
+    this.dialogRef.close()
   }
 }
